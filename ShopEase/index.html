@@ -1,14 +1,429 @@
-<p>✈️ Discover new destinations</p>
-<p>🌿 Enjoy beautiful nature</p>
-<p>📸 Create unforgettable memories</p></section>
-<section id="Contact"><h1>Contact Us</h1>
-<p>Email: travel@example.com</p>
-<p>Phone: +91 98765 43210</p></section>
-<script>
-function go(id){
-document.querySelectorAll('section').forEach(s=>s.style.display='none');
-document.getElementById(id).style.display='block';
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ShopEase | Online Shopping</title>
+
+<style>
+* {
+    box-sizing: border-box;
 }
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f7f7fb;
+    color: #222;
+    text-align: center;
+}
+
+nav {
+    background: #20243a;
+    color: white;
+    padding: 18px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+nav h2 {
+    margin: 0;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 10px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+nav a:hover {
+    color: #ff9b70;
+}
+
+section {
+    display: none;
+    padding: 40px 20px;
+    min-height: 65vh;
+    animation: fade 0.4s;
+}
+
+#Home {
+    display: block;
+}
+
+h1 {
+    color: #20243a;
+}
+
+button {
+    background: #ff795e;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 15px;
+}
+
+button:hover {
+    background: #20243a;
+    transform: translateY(-2px);
+}
+
+.hero {
+    padding: 25px 0;
+}
+
+.hero h1 {
+    font-size: 38px;
+}
+
+.hero p {
+    color: #666;
+    font-size: 18px;
+}
+
+.hero img {
+    width: 90%;
+    max-width: 850px;
+    height: 330px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin-top: 25px;
+}
+
+.products {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.card {
+    background: white;
+    width: 240px;
+    padding: 18px;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px #ddd;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 22px #ccc;
+}
+
+.card img {
+    width: 100%;
+    height: 170px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.card h3 {
+    margin-bottom: 8px;
+}
+
+.price {
+    color: #e45b40;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.info-box {
+    background: white;
+    max-width: 700px;
+    margin: 20px auto;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px #ddd;
+    line-height: 1.8;
+}
+
+.cart-container {
+    max-width: 750px;
+    margin: 25px auto;
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px #ddd;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+}
+
+.cart-item button {
+    padding: 8px 12px;
+}
+
+#total {
+    font-size: 23px;
+    color: #20243a;
+}
+
+footer {
+    background: #20243a;
+    color: white;
+    padding: 22px;
+}
+
+@keyframes fade {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 600px) {
+    nav {
+        justify-content: center;
+    }
+
+    nav a {
+        margin: 6px;
+        font-size: 14px;
+    }
+
+    .hero h1 {
+        font-size: 28px;
+    }
+
+    .hero img {
+        height: 220px;
+    }
+
+    .cart-item {
+        flex-wrap: wrap;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+    <h2>🛍️ ShopEase</h2>
+    <div>
+        <a onclick="go('Home')">Home</a>
+        <a onclick="go('Products')">Products</a>
+        <a onclick="go('About')">About</a>
+        <a onclick="go('Contact')">Contact</a>
+        <a onclick="go('Cart')">
+            Cart 🛒 (<span id="cartCount">0</span>)
+        </a>
+    </div>
+</nav>
+
+<!-- HOME -->
+<section id="Home">
+    <div class="hero">
+        <h1>Discover Your Style</h1>
+        <p>Find your favourites at amazing prices.</p>
+        <p>Shop the latest trends with ShopEase!</p>
+
+        <button onclick="go('Products')">
+            Shop Now →
+        </button>
+
+        <div>
+            <img
+                src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=900"
+                alt="Shopping Store">
+        </div>
+    </div>
+
+    <h2>Why Shop With Us?</h2>
+    <p>✨ Quality Products | 💰 Affordable Prices | ❤️ Easy Shopping</p>
+</section>
+
+<!-- PRODUCTS -->
+<section id="Products">
+    <h1>Our Products</h1>
+    <p>Explore our collection of stylish products.</p>
+
+    <div class="products" id="products"></div>
+</section>
+
+<!-- ABOUT -->
+<section id="About">
+    <h1>About ShopEase</h1>
+
+    <div class="info-box">
+        <h2>Welcome to ShopEase!</h2>
+
+        <p>Quality products at affordable prices.</p>
+
+        <p>✨ Stylish and reliable products</p>
+        <p>💰 Great deals for everyone</p>
+        <p>❤️ Simple and enjoyable shopping</p>
+
+        <p>
+            At ShopEase, we aim to make online shopping
+            easy, enjoyable, and affordable for everyone.
+        </p>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="Contact">
+    <h1>Contact Us</h1>
+
+    <div class="info-box">
+        <h2>Get in Touch</h2>
+
+        <p>📞 Contact Number: +91 98765 43210</p>
+
+        <p>📍 Shop Address: MG Road, Bengaluru, Karnataka</p>
+
+        <p>📧 Email: support@shopease.example</p>
+
+        <p>We are happy to help you!</p>
+    </div>
+</section>
+
+<!-- CART -->
+<section id="Cart">
+    <h1>Your Shopping Cart</h1>
+
+    <div class="cart-container">
+        <div id="items">Your cart is empty</div>
+
+        <h3 id="total">Total: ₹0</h3>
+
+        <button onclick="clearCart()">
+            Clear Cart
+        </button>
+
+        <button onclick="go('Products')">
+            Continue Shopping
+        </button>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <p>© 2026 ShopEase | Happy Shopping!</p>
+    <p>Made with ❤️ for Shopping Lovers</p>
+</footer>
+
+<script>
+
+// Shopping cart
+let cart = [];
+
+// Product data
+let data = [
+    ['Shoes', 1499, 'photo-1542291026-7eec264c27ff'],
+    ['Watch', 999, 'photo-1523275335684-37898b6baf30'],
+    ['Bag', 1199, 'photo-1548036328-c9fa89d128fa'],
+    ['Headphones', 799, 'photo-1505740420928-5e560c06d30e']
+];
+
+// Display products
+document.getElementById('products').innerHTML =
+    data.map((p, i) => `
+        <div class="card">
+            <img
+                src="https://images.unsplash.com/${p[2]}?w=400"
+                alt="${p[0]}">
+
+            <h3>${p[0]}</h3>
+
+            <p class="price">₹${p[1]}</p>
+
+            <button onclick="addToCart(${i})">
+                Add to Cart 🛒
+            </button>
+        </div>
+    `).join('');
+
+// Add product to cart
+function addToCart(index) {
+    cart.push(index);
+    render();
+    alert(data[index][0] + " added to cart!");
+}
+
+// Navigation
+function go(id) {
+    document.querySelectorAll('section').forEach(s => {
+        s.style.display = 'none';
+    });
+
+    document.getElementById(id).style.display = 'block';
+
+    if (id === 'Cart') {
+        render();
+    }
+
+    window.scrollTo(0, 0);
+}
+
+// Display cart
+function render() {
+    const items = document.getElementById('items');
+    const total = document.getElementById('total');
+
+    if (cart.length === 0) {
+        items.innerHTML = 'Your cart is empty';
+    } else {
+        items.innerHTML = cart.map((i, position) => `
+            <div class="cart-item">
+                <span>${data[i][0]} — ₹${data[i][1]}</span>
+
+                <button onclick="removeItem(${position})">
+                    Remove
+                </button>
+            </div>
+        `).join('');
+    }
+
+    const amount = cart.reduce(
+        (sum, i) => sum + data[i][1], 0
+    );
+
+    total.textContent = 'Total: ₹' + amount;
+
+    document.getElementById('cartCount').textContent =
+        cart.length;
+}
+
+// Remove individual product
+function removeItem(position) {
+    cart.splice(position, 1);
+    render();
+}
+
+// Clear shopping cart
+function clearCart() {
+    cart = [];
+    render();
+}
+
+// Initialize cart
+render();
+
 </script>
+
 </body>
 </html>
